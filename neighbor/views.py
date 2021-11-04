@@ -6,7 +6,7 @@ from django.http import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile,NeighbourHood,Business
-from .decorators import unauthenticated_user,allowed_users
+
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm,BusinessForm
 from django.contrib import messages
 from django .contrib.auth import authenticate, login,logout
@@ -19,7 +19,7 @@ from datetime import date, datetime
 # Create your views here.
 
 
-@unauthenticated_user
+
 def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def registerPage(request):
 
     context = {'form': form}
     return render(request,'accounts/register.html',context)
-@unauthenticated_user
+
 def loginPage(request):
     if request.method == 'POST':
         username=request.POST.get('username')
@@ -48,7 +48,7 @@ def loginPage(request):
             
 
     context = {}
-    return render(request,'accounts/plogin.html',context)
+    return render(request,'accounts/login.html',context)
 
 def logoutUser(request):
     logout(request)
@@ -92,7 +92,7 @@ def profile(request):
     return render(request, 'accounts/profile.html', context)
 
 
-@login_required(login_url='login')
+
 def home(request):
     posts = NeighbourHood.objects.all()
     context={"posts":posts}
@@ -165,16 +165,3 @@ def create_business(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=[' businessname '])
-def accountSettings(request):
-	bussiness = request.user. businessname 
-	form = PostForm(instance=bussiness)
-	if request.method == 'POST':
-		form = PostForm(request.POST, request.FILES,instance=bussiness)
-		if form.is_valid():
-			form.save()
-
-
-	context = {'form':form}
-	return render(request, 'accounts/userproc.html', context)

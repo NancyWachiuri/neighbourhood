@@ -17,7 +17,6 @@ urlpatterns =[
     path('new/', views.create_post, name='post'),
     path('bizna/', views.create_business, name='bizz'),
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
-    path('account/',views.accountSettings,name='account'),
     path('search_results/',views.search_results, name='search_results')
     
 
