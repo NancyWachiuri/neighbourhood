@@ -103,7 +103,7 @@ def home(request):
 
 def viewPhoto(request,pk):
     photo = NeighbourHood.objects.get(id=pk)
-    return render(request,'post_detail.html',{'photo':photo})
+    return render(request,'hood_detail.html',{'photo':photo})
 
 
 @login_required(login_url='login')
