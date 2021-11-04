@@ -1,0 +1,78 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+
+
+
+
+{% for post in posts %}
+<div class="container">
+  
+ 
+  
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <a href="{% url 'photo' post.id%}" style="text-transform: uppercase;"><h5 class="card-title">{{ post.Name }}</h5></a>
+          <p class="subtitle">Location: {{ post.location }}</p>
+          <p class="card-text">population :{{post.population}}</p>
+          <p class="card-text">Health contact :{{ post.healthno }}</p>
+          <p class="card-text">Police contact :{{ post.policeno }}</p>
+        </article>
+        {% if post.image %}
+        <figure class="image is-4by3">
+          <img src="{{post.image.url}}">
+        </figure>
+        {% endif %}
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <h2 class="subtitle">{{ post.Name }}</h2>
+          <p class="subtitle">{{ post.location }}</p>
+          {% if post.image %}
+          <figure class="image is-4by3">
+            <img src="{{post.image.url}}">
+          </figure>
+        {% endif %}
+        </article>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+  
+</div>
+{% endfor %}
+
+
+<style>
+
+  .tile{
+    font-style: italic;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Zen Old Mincho', serif;
+    color: #334756;
+
+  }
+  .tile h2{ 
+    text-transform: uppercase;
+  }
+
+.tile p{ 
+  text-transform: uppercase
+}
+
+</style>
+
+
+
+
+
+{% endblock%}
