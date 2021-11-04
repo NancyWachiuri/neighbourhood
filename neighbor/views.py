@@ -143,7 +143,7 @@ def biznamtaa(request):
     posts = Business.objects.all()
     context={"posts":posts}
 
-    return render (request, 'bizhome.html', context)
+    return render (request, 'bssmtaa.html', context)
 
 
 

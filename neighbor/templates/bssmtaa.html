@@ -1,0 +1,61 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+
+
+
+
+{% for post in posts %}
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half">
+        <div class="box">
+              <div class="media-left">
+                <figure class="image is-264x264">
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="...">
+                    {% endif %}
+                </figure>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Bizname: {{ post.businessname }}</h5>
+                  <h5 class="card-title">Email Address: {{ post.email }}</h5>
+                  <p class="card-text">created at:{{post.created_date}}</p>
+                </div>
+              </div>
+             
+          </div>
+    </div>
+</div>
+    </div>
+    
+</section>
+
+    {% endfor %}
+    <a href="{% url 'bizz'%}"><button class="button"  style="text-transform: capitalize; font-style: italic; background-color: 
+        #F0A500;">add business</button></a><br>
+
+
+
+
+
+    <style>
+
+        body {
+            background-color: #000000;
+        }
+        .box{
+    font-style: italic;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Zen Old Mincho', serif;
+    color: #334756;
+
+        }
+    </style>
+
+{% endblock%}
