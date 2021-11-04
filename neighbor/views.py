@@ -101,7 +101,7 @@ def home(request):
 
 
 
-def viewPhoto(request,pk):
+def viewHood(request,pk):
     photo = NeighbourHood.objects.get(id=pk)
     return render(request,'hood_detail.html',{'photo':photo})
 
@@ -139,7 +139,7 @@ def search_results(request):
 
 
 @login_required(login_url='login')
-def biznamtaa(request):
+def kwetubiz(request):
     posts = Business.objects.all()
     context={"posts":posts}
 
@@ -149,7 +149,7 @@ def biznamtaa(request):
 
 
 @login_required(login_url='login')
-def create_business(request):
+def add_bss(request):
     current_user = request.user
     if request.method == "POST":
         form = BusinessForm(request.POST,request.FILES)

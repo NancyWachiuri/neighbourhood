@@ -27,7 +27,7 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'post' %}">add your hood</a>
+                <a class="nav-link" href="{% url 'addhood' %}">add your hood</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile' %}">Profile</a>
@@ -36,7 +36,7 @@
                 <a class="nav-link" href="{% url 'biashara' %}">Bussiness</a>
               </li>
             </ul>
-            <form class="d-flex" role="search"  action="{% url 'search_results' %}">
+            <form class="d-flex" role="search"  action="{% url 'search' %}">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="businessname">
                     <div class="input-group-btn">
