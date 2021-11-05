@@ -76,7 +76,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'neighbor',
-    'crispy_forms'
+    
 ]
 
 MIDDLEWARE = [
@@ -175,3 +175,5 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+django_heroku.settings(locals())
