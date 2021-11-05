@@ -28,9 +28,41 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-1(3mf(+&1%_b7*=o_dmp4xzq!(@88(ur#_51n7#_ef8_2^z6!r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+MODE=config("MODE", default="dev")
+DEBUG = os.environ.get('DEBUG', True)
+# development
+if config('MODE')=="dev":
 
-ALLOWED_HOSTS = []
+
+
+
+    DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('127.0.0.1'),
+           'PORT': '',
+       }
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(),)
+
+
+ALLOWED_HOSTS = ['.localhost','.herokuapp.com','.127.0.0.1']
+
+
+
 
 
 # Application definition
